@@ -25,9 +25,11 @@ async def on_ready():
     #help
  
     @client.event
+
+    #embed help list
     async def on_message(message):
 
-        #embed help list
+
         if message.content.startswith('$help'):
                 embedVar = discord.Embed(title="Comads", description="dont forget to use the \"$\" to use the comands", color=0x00ff00)
                 embedVar.add_field(name="Hi comads", value="$hi / $hello / $sup", inline=False)
