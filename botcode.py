@@ -18,31 +18,41 @@ async def on_ready():
 @client.event
 async def on_message(message):
     #help
-    if message.author == client.user:
-        return
-    
-    if message.content.startswith("$help"):
-        await message.channel.send("don forget to use   \"$\"    to use these comads\n\nhelp     -    for all comads \n \nhello      /    hi     /   sup \n\npenis    -   for      🍆\n\nharam-     🐖 ")
-    #hi comands
-    if message.author == client.user:
-        return
 
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello!😀')
+    @client.event
+    async def on_message(message):
 
-    if message.content.startswith('$hi'):
-        await message.channel.send('eyyyy😀')
+        if message.content.startswith('$help'):
+            embedVar = discord.Embed(title="Comads", description="dont forget to use the \"$\" to use the comands", color=0x00ff00)
+            embedVar.add_field(name="Hi comads", value="$hi / $hello / $sup", inline=False)
+            embedVar.add_field(name="$penis", value="to be sus", inline=False)
+            embedVar.add_field(name="$haram", value="to see what is haram", inline=False)
+            # embedVar.add_field(name="Field2", value="hi2", inline=False)
+            # embedVar.add_field(name="Field2", value="hi2", inline=False)
+            # embedVar.add_field(name="Field2", value="hi2", inline=False)
+            # embedVar.add_field(name="Field2", value="hi2", inline=False)
+            await message.channel.send(embed=embedVar)
 
-    if message.content.startswith('$sup'):
-        await message.channel.send('sup my dued😀')
-    
-    #new
+        #hi comands
+        if message.author == client.user:
+            return
 
-    elif message.content.startswith('$penis'):
-        await message.channel.send("🍆")
+        if message.content.startswith('$hello'):
+            await message.channel.send('Hello!😀')
 
-    elif message.content.startswith('$haram'):
-        await message.channel.send("🐖")
+        if message.content.startswith('$hi'):
+            await message.channel.send('eyyyy😀')
+
+        if message.content.startswith('$sup'):
+            await message.channel.send('sup my dued😀')
+        
+        #new
+
+        elif message.content.startswith('$penis'):
+            await message.channel.send("🍆")
+
+        elif message.content.startswith('$haram'):
+            await message.channel.send("🐖")
 
 
 
