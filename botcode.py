@@ -11,6 +11,7 @@ client = discord.Client(commands_prefix=PREFIX, intents=INTENTS)
 
 @client.event
 async def on_ready():
+    await client . change_presence(status=discord. Status . idle, activity=discord . Game("check my code here-https://github.com/Null-B/bot " ))
     print(f'Logged in as: {client.user.name}')
     print(f'With ID: {client.user.id}')
 #comands
