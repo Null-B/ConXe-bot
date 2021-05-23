@@ -19,21 +19,9 @@ async def on_ready():
     print(f'Logged in as: {client.user.name}')
     print(f'With ID: {client.user.id}')
 
-#users join/leave /log
-client.event
-async def on_memberjoin(member,message): 
-    print(f'member has joined a server. ') 
-    await message.channel.send(member,'member has joined a server.')
-
-async def on_member_remove(member,message): 
-    print(f'member has left a server.' )
-    await message.channel.send(member,'member has left a server.')
-
 
 #comands
 
-@client.event
-async def on_message(message):
     #help
  
     @client.event
