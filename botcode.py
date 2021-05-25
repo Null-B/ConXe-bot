@@ -2,15 +2,23 @@
 import discord
 import os
 from dotenv import load_dotenv
+import json
+import requests
 load_dotenv()
 
 #deps
 TOKEN = os.getenv("TOKEN")
-PREFIX = '!'
 INTENTS = discord.Intents.default()
 
 #client
-client = discord.Client(commands_prefix=PREFIX, intents=INTENTS)
+client = discord.Client(intents=INTENTS)
+
+
+async def get_quote():
+    response = requests.get("https://zenquotes.io/api/random")
+    json_data = json.loads(response.text)
+    quote = json_data[0]['q'] + "-" + json_data[0]['a'] 
+    return(quote)
 
 #reddy message
 @client.event
@@ -20,13 +28,16 @@ async def on_ready():
     print(f'With ID: {client.user.id}')
 
 
+
+
 #comands
 
     #help
  
     @client.event
+    
 
-    #embed help list
+    #all the text comands
     async def on_message(message):
 
 
@@ -49,6 +60,9 @@ async def on_ready():
         if message.content.startswith('$sup'):
             await message.channel.send('sup my dued😀')
         
-        #new
+        #inspiration 
+        if message.content.startswith('$inspire'):
+            quote = get_quote() 
+            await message.channel.send(quote) 
 
 client.run(TOKEN)
