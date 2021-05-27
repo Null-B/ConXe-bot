@@ -1,9 +1,7 @@
 #Moduals
-import discord
-import os
+import discord,os, json, requests
 from dotenv import load_dotenv
-import json
-import requests
+from discord.ext import commands
 load_dotenv()
 
 #deps
@@ -12,6 +10,7 @@ INTENTS = discord.Intents.default()
 
 #client
 client = discord.Client(intents=INTENTS)
+
 
 
 async def get_quote():
@@ -31,6 +30,15 @@ async def on_ready():
 
 
 #comands
+
+@commands.Cog.listener()
+async def on_member_join(self, member):
+    for channel in member.guild.channels:
+        if str(channel) == "join-leave":
+            embed = discord.Embed(color=0x4a3d9a)
+            embed.add_field(name="Welcome", value=f"{member.name} has joined {member.guild.name}", inline=False)
+            embed.set_image(url="https://newgitlab.elaztek.com/NewHorizon-Development/discord-bots/Leha/-/raw/master/res/welcome.gif")
+            await channel.send(embed=embed)
 
     #help
  
