@@ -8,11 +8,29 @@ load_dotenv()
 TOKEN = os.getenv("TOKEN")
 INTENTS = discord.Intents.default()
 
-#client
+#client/comads
 client = discord.Client(intents=INTENTS)
+commands = discord.commands(intents=INTENTS)
 
 
+INTENTS = discord.Intents.default()
+bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS)
 
+
+@bot.event
+async def on_ready():
+    print(f'Logged in as: {bot.user.name}')
+    print(f'With ID: {bot.user.id}')
+
+
+@bot.command()
+async def ping(ctx):
+    await ctx.send('pong')
+
+
+bot.run(TOKEN)
+
+#you ahve to fix the quotes
 async def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
     json_data = json.loads(response.text)
@@ -30,7 +48,7 @@ async def on_ready():
 
 
 #comands
-
+#and this below
 @commands.Cog.listener()
 async def on_member_join(self, member):
     for channel in member.guild.channels:
