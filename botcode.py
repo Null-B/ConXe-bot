@@ -18,7 +18,7 @@ client = Client(intents=INTENTS)
 async def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
     json_data = json.loads(response.text)
-    quote = json_data[0]['q'] + "-" + json_data[0]['a'] 
+    quote = json_data[0]["q"] + "-" + json_data[0]["a"] 
     return(quote)
 
 
@@ -51,6 +51,7 @@ async def on_message(message):
     if message.content.startswith('$help'):
             embedVar = Embed(title="Comads", description="dont forget to use the \"$\" to use the comands", color=0x00ff00)
             embedVar.add_field(name="Hi comads", value="$hi / $hello / $sup", inline=False)
+            embedVar.add_field(name="more comads", value="$inspire", inline=False)
             await message.channel.send(embed=embedVar)
     
     #hi comands
