@@ -1,8 +1,8 @@
-#Moduals
 import os, json, requests
 from dotenv import load_dotenv
 from discord import Client, Intents, Embed, Status, Game
 from discord.ext import commands
+from websever import keep_aliveO
 load_dotenv()
 
 #deps
@@ -72,4 +72,5 @@ async def on_message(message):
         quote = get_quote() 
         await message.channel.send(quote) 
 
+keep_aliveO()
 client.run(TOKEN)
