@@ -1,0 +1,3 @@
+git+https://github.com/Rappiz/discord.py@rewrite
+dotenv==8.2.0
+discord==1.0.1
