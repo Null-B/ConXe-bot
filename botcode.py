@@ -33,7 +33,7 @@ async def on_ready():
 
 
 #comands
-
+#join moment
 @client.event
 async def on_member_join(member):
     for channel in member.guild.channels:
