@@ -14,18 +14,18 @@ INTENTS.members = True
 client = Client(intents=INTENTS)
 
 
-#you ahve to fix the quotes
 async def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
     json_data = json.loads(response.text)
-    quote = json_data[0]["q"] + "-" + json_data[0]["a"] 
+    quote = json_data[0]["q"] + "-" + json_data[0]["a"]
+    
     return(quote)
 
 
 #reddy message
 @client.event
 async def on_ready():
-    await client.change_presence(status= Status.idle, activity= Game("check my code here-https://github.com/Null-B/bot " ))
+    await client.change_presence(status= Status.online, activity= Game("check my code here-https://github.com/Null-B/bot " ))
     print(f'Logged in as: {client.user.name}')
     print(f'With ID: {client.user.id}')
 
@@ -37,13 +37,21 @@ async def on_ready():
 @client.event
 async def on_member_join(member):
     for channel in member.guild.channels:
-        if str(channel) == "join-leave":
+        if str(channel) == "welcome":
             embed = Embed(color=0x4a3d9a)
             embed.add_field(name="Welcome", value=f"{member.mention} has joined {member.guild.name}", inline=False)
             embed.set_image(url="https://newgitlab.elaztek.com/NewHorizon-Development/discord-bots/Leha/-/raw/master/res/welcome.gif")
             await channel.send(embed=embed)
 
-
+#leave moment
+@client.event
+async def on_member_leave(member):
+    for channel in member.guild.channels:
+        if str(channel) == "welcome":
+            embed = Embed(color=0x4a3d9a)
+            embed.add_field(name="good bye", value=f"{member.mention} has left the {member.guild.name}", inline=False)
+            embed.set_image(url="https://newgitlab.elaztek.com/NewHorizon-Development/discord-bots/Leha/-/raw/master/res/welcome.gif")
+            await channel.send(embed=embed)
  
 @client.event
 async def on_message(message):
@@ -51,12 +59,12 @@ async def on_message(message):
     if message.content.startswith('$help'):
             embedVar = Embed(title="Comads", description="dont forget to use the \"$\" to use the comands", color=0x00ff00)
             embedVar.add_field(name="Hi comads", value="$hi / $hello / $sup", inline=False)
-            embedVar.add_field(name="more comads", value="$inspire", inline=False)
+            embedVar.add_field(name="more comads", value="$inspire "+ "$invite", inline=False)
             await message.channel.send(embed=embedVar)
 
     if message.content.startswith('$invite'):
         embedVar = Embed(title="Comads", description="Here is the invite", color=0x04b4db)
-        embedVar.add_field(name="*https://discord.gg/Tehtfh6gwz*")
+        embedVar.add_field(name="*https://discord.gg/Tehtfh6gwz*", value="$hi / $hello / $sup", inline=False)
         await message.channel.send(embed=embedVar)
         
     #hi comands
@@ -74,7 +82,7 @@ async def on_message(message):
     
     #inspiration 
     if message.content.startswith('$inspire'):
-        quote = get_quote() 
+        quote = await get_quote()
         await message.channel.send(quote) 
 
 keep_aliveO()
