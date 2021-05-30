@@ -53,7 +53,12 @@ async def on_message(message):
             embedVar.add_field(name="Hi comads", value="$hi / $hello / $sup", inline=False)
             embedVar.add_field(name="more comads", value="$inspire", inline=False)
             await message.channel.send(embed=embedVar)
-    
+
+    if message.content.startswith('$invite'):
+        embedVar = Embed(title="Comads", description="Here is the invite", color=0x04b4db)
+        embedVar.add_field(name="*https://discord.gg/Tehtfh6gwz*")
+        await message.channel.send(embed=embedVar)
+        
     #hi comands
     if message.author == client.user:
         return
