@@ -2,7 +2,7 @@ import os, json, requests
 from dotenv import load_dotenv
 from discord import Client, Intents, Embed, Status, Game
 from discord.ext import commands
-from websever import keep_aliveO
+# from websever import keep_aliveO
 load_dotenv()
 
 #deps
@@ -17,10 +17,25 @@ client = Client(intents=INTENTS)
 async def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
     json_data = json.loads(response.text)
-    quote = json_data[0]["q"] + "-" + json_data[0]["a"]
-    
+    quote = (f"{json_data[0]['q']} \n\n **{json_data[0]['a']}**")
+
     return(quote)
 
+
+async def get_quote_embed():
+    response = requests.get("https://zenquotes.io/api/random")
+    json_data = json.loads(response.text)
+
+    quote= (f"{json_data[0]['q']}  {json_data[0]['a']}")
+
+    print (quote)
+
+    embed = Embed(color=0x4a3d9a)
+    embed.add_field(name="Quote", value = f"{json_data[0]['q']}  {json_data[0]['a']}")
+
+    quote = embed
+
+    return(quote)
 
 #reddy message
 @client.event
@@ -45,14 +60,14 @@ async def on_member_join(member):
 
 #leave moment
 @client.event
-async def on_member_leave(member):
+async def on_member_remove(member):
     for channel in member.guild.channels:
         if str(channel) == "welcome":
-            embed = Embed(color=0x4a3d9a)
-            embed.add_field(name="good bye", value=f"{member.mention} has left the {member.guild.name}", inline=False)
-            embed.set_image(url="https://newgitlab.elaztek.com/NewHorizon-Development/discord-bots/Leha/-/raw/master/res/welcome.gif")
+            embed = Embed(color=0xdeb110)
+            embed.add_field(name="Welcome", value=f"{member.name} has left {member.guild.name}", inline=False)
+            embed.set_image(url="https://newgitlab.elaztek.com/NewHorizon-Development/discord-bots/Leha/-/raw/master/res/goodbye.gif")
             await channel.send(embed=embed)
- 
+
 @client.event
 async def on_message(message):
 
@@ -85,5 +100,10 @@ async def on_message(message):
         quote = await get_quote()
         await message.channel.send(quote) 
 
-keep_aliveO()
+    if message.content.startswith('$comad'):
+        quote = await get_quote_embed()
+        await message.channel.send(quote)
+
+# keep_aliveO()
 client.run(TOKEN)
+
