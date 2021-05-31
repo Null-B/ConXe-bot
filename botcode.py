@@ -1,24 +1,24 @@
-import os, json, requests
-from tkinter.font import BOLD
-from dotenv import load_dotenv
+import os
+import json
+import requests
 from discord import Client, Intents, Embed, Status, Game
-from discord.ext import commands
-import discord
-# from websever import keep_aliveO
+# from webserver import keep_alive
+from dotenv import load_dotenv
 load_dotenv()
 
-#deps
+# discord bot client settings
 TOKEN = os.getenv("TOKEN")
-client = commands.Bot(command_prefix = "!")
 INTENTS = Intents.default()
 INTENTS.members = True
 
-#client
-client = Client(intents=INTENTS)
+# client
+client = Client(
+    command_prefix="!",
+    intents=INTENTS
+    )
 
 
-
-async def random_qotegen2():
+async def random_quote_gen():
     url = "https://quotejoy.p.rapidapi.com/list-sources"
 
     headers = {
@@ -27,12 +27,9 @@ async def random_qotegen2():
         }
 
     response = requests.request("GET", url, headers=headers)
-    quote2 = (response)
+    quote = (response)
     print(response.text)
-    return (quote2)
-
-    
-
+    return (quote)
 
 
 async def get_quote():
@@ -53,67 +50,108 @@ async def get_quote():
 #     print (quote_embed)
 
 #     # embed = Embed(color=0x4a3d9a)
-#     # embed.add_field.name="Quote", value = 
-    
-
+#     # embed.add_field.name="Quote", value =
 
 #     print(quote_embed)
 #     return(embed)
 
-#reddy message
+# ready message
 @client.event
 async def on_ready():
-    await client.change_presence(status= Status.online, activity= Game("check my code here-https://github.com/Null-B/bot " ))
+    await client.change_presence(
+        status=Status.online,
+        activity=Game(
+            "check my code here-https://github.com/Null-B/bot"
+            )
+        )
     print(f'Logged in as: {client.user.name}')
     print(f'With ID: {client.user.id}')
 
-#kick/ban
-# @client.comands() 
+# kick/ban
+# @client.commands
 # async def kick(ctx, member : discord.Member, *, reason=None):
-#     await member.kick(reason=reason) 
+#     await member.kick(reason=reason)
 
-# @client.comands()
+# @client.command
 # async def ban(ctx, member : discord.Member, *, reason=None):
-#     await member.ban(reason=reason) 
+#     await member.ban(reason=reason)
+
+# comands
+# join moment this goood
 
 
-
-#comands
-#join moment this goood
 @client.event
 async def on_member_join(member):
     for channel in member.guild.channels:
         if str(channel) == "welcome":
-            embed = Embed(color=0x4a3d9a)
-            embed.add_field(name="Welcome", value=f"{member.mention} has joined {member.guild.name}", inline=False)
-            embed.set_image(url="https://newgitlab.elaztek.com/NewHorizon-Development/discord-bots/Leha/-/raw/master/res/welcome.gif")
+            embed = Embed(
+                color=0x4a3d9a
+                )
+            embed.add_field(
+                name="Welcome",
+                value=f"{member.mention} has joined {member.guild.name}",
+                inline=False
+                )
+            embed.set_image(
+                url=("https://newgitlab.elaztek.com/NewHorizon-Developme"
+                     "nt/discord-bots/Leha/-/raw/master/res/welcome.gif")
+                )
             await channel.send(embed=embed)
 
-#leave moment fix this
+
+# leave moment fix this
 @client.event
 async def on_member_remove(member):
     for channel in member.guild.channels:
         if str(channel) == "welcome":
-            embed = Embed(color=0xdeb110)
-            embed.add_field(name="Welcome", value=f"{member.name} has left {member.guild.name}", inline=False)
-            embed.set_image(url="https://newgitlab.elaztek.com/NewHorizon-Development/discord-bots/Leha/-/raw/master/res/goodbye.gif")
+            embed = Embed(
+                color=0xdeb110
+                )
+            embed.add_field(
+                name="Welcome",
+                value=f"{member.name} has left {member.guild.name}",
+                inline=False
+                )
+            embed.set_image(
+                url=("https://newgitlab.elaztek.com/NewHorizon-Developme"
+                     "nt/discord-bots/Leha/-/raw/master/res/goodbye.gif")
+                )
             await channel.send(embed=embed)
+
 
 @client.event
 async def on_message(message):
-
     if message.content.startswith('$help'):
-            embedVar = Embed(title="Comads", description="dont forget to use the \"$\" to use the comands", color=0x00ff00)
-            embedVar.add_field(name="Hi comads", value="$hi / $hello / $sup", inline=False)
-            embedVar.add_field(name="more comads", value="$inspire "+ " $invite", inline=False)
-            await message.channel.send(embed=embedVar)
-#add image to the invite
-    if message.content.startswith('$invite'):
-        embedVar = Embed(title="Comads", description="Here is the invite", color=0x04b4db)
-        embedVar.add_field(name="*https://discord.gg/Tehtfh6gwz*", value="**you can use this invite to join**", inline=False)
+        embedVar = Embed(
+            title="Commands",
+            description="dont forget to use the \"$\" to use the comands",
+            color=0x00ff00
+            )
+        embedVar.add_field(
+            name="Hi commands",
+            value="$hi / $hello / $sup",
+            inline=False
+            )
+        embedVar.add_field(
+            name="more commands",
+            value="$inspire / $invite",
+            inline=False
+            )
         await message.channel.send(embed=embedVar)
-        
-    #hi comands
+# add image to the invite
+    if message.content.startswith('$invite'):
+        embedVar = Embed(
+            title="Server Invite",
+            description="Here is the invite",
+            color=0x04b4db
+            )
+        embedVar.add_field(
+            name="*https://discord.gg/Tehtfh6gwz*",
+            value="**you can use this invite to join**",
+            inline=False)
+        await message.channel.send(embed=embedVar)
+
+    # hi commands
     if message.author == client.user:
         return
 
@@ -126,18 +164,19 @@ async def on_message(message):
     if message.content.startswith('$sup'):
         await message.channel.send('sup my dued😀')
 
-    
-    #inspiration 
+    # inspiration
     if message.content.startswith('$inspire'):
         quote = await get_quote()
-        await message.channel.send(quote) 
+        await message.channel.send(quote)
 
     # if message.content.startswith('$comad'):
     #     quote = await get_quote_embed()
     #     await message.channel.send(quote)
 
-    if message.content.startswith('$qoute'):
-        qoute2 = await random_qotegen2()
-        await message.channel.send(qoute2)
-# keep_aliveO()
+    if message.content.startswith('$quote'):
+        quote = await random_quote_gen()
+        await message.channel.send(quote)
+
+# keep_alive()
+
 client.run(TOKEN)
