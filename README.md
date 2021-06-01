@@ -5,6 +5,7 @@ This is a [discord.py](https://discordpy.readthedocs.io/en/stable/) bot made by 
 
 the main code is in botcode.py if you want to mess around with it
 <br>
+<br> 
 how to you run it ?<br> 
 <br> 
 First you need to [clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository) the repository to an editor/IDE of your choice.<br> 
