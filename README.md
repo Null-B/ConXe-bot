@@ -1,6 +1,6 @@
 # The "Your mom bot" github readme md
-## THIS BOT IS THIS IN DEVELOPMENT!!!
-## --------------------------------------------------------------------------------------------------------------------------------------
+## THIS BOT IS THIS IN DEVELOPMENT!!!<br> 
+
 This is a [discord.py](https://discordpy.readthedocs.io/en/stable/) bot made by the user Null-B, and it has multiple commands in the code.<br> 
 <br>
 the main code is in botcode.py if you want to mess around with it
