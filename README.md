@@ -9,8 +9,7 @@ the main code is in botcode.py if you want to mess around with it
 how to you run it ?<br> 
 First you need to [clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository) the repository to an editor/IDE of your choice.<br> 
 
-## <br>
-
+<br> 
 Then you must pip install the dotenv module if you don’t have it, if you do then you can continue. Make a .env file and put in the .env file. 
 
 ```
