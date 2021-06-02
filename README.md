@@ -10,7 +10,12 @@ how to you run it ?<br>
 <br> 
 First you need to [clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository) the repository to an editor/IDE of your choice.<br> 
  
-Then you must pip install the dotenv module if you don’t have it, if you do then you can continue. Make a .env file and put in the .env file. 
+Then you must pip install all of the required modules, do that by running
+``
+pip3 install -r requirements.txt
+``
+
+Now you can continue. Make a `.env` file and put in the `.env` file. 
 
 ```
 TOKEN= (your discord.py bot token)
