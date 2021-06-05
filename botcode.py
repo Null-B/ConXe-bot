@@ -1,7 +1,10 @@
 import os
 import json
 import requests
+import random
 from discord import Client, Intents, Embed, Status, Game
+from discord.ext import comands
+
 # from webserver import keep_alive
 from dotenv import load_dotenv
 load_dotenv()
@@ -11,13 +14,29 @@ TOKEN = os.getenv("TOKEN")
 INTENTS = Intents.default()
 INTENTS.members = True
 
-# client
+# client / bot comad
 client = Client(
     command_prefix="!",
     intents=INTENTS
     )
 
+client2 = comands.bot(
+    command_prefix = '!'
+)
 
+# Ready message
+@client.event
+async def on_ready():
+    await client.change_presence(
+        status=Status.online,
+        activity=Game(
+            "check my code here-https://github.com/Null-B/bot"
+            )
+        )
+    print (f'Logged in as: {client.user.name}')
+    print (f'With ID: {client.user.id}')
+
+# Json for the inspire fucntion
 async def random_quote_gen():
     url = "https://quotejoy.p.rapidapi.com/list-sources"
 
@@ -28,18 +47,21 @@ async def random_quote_gen():
 
     response = requests.request("GET", url, headers=headers)
     quote = (response)
-    print(response.text)
+    print (response.text)
     return (quote)
 
 
+#add a func for random emojis
+
+#inspire foramt
 async def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
     json_data = json.loads(response.text)
     quote = (f"{json_data[0]['q']} \n\n **{json_data[0]['a']}**")
 
-    return(quote)
+    return (quote)
 
-
+# inspire but with embed
 # async def get_quote_embed():
 #     response = requests.get("https://zenquotes.io/api/random")
 #     json_data = json.loads(response.text)
@@ -55,31 +77,24 @@ async def get_quote():
 #     print(quote_embed)
 #     return(embed)
 
-# ready message
-@client.event
-async def on_ready():
-    await client.change_presence(
-        status=Status.online,
-        activity=Game(
-            "check my code here-https://github.com/Null-B/bot"
-            )
-        )
-    print(f'Logged in as: {client.user.name}')
-    print(f'With ID: {client.user.id}')
+
+
+
 
 # kick/ban
 # @client.commands
-# async def kick(ctx, member : discord.Member, *, reason=None):
+# async def kick(ctx, member : client.Member, *, reason=None):
 #     await member.kick(reason=reason)
 
 # @client.command
-# async def ban(ctx, member : discord.Member, *, reason=None):
+# async def ban(ctx, member : client.Member, *, reason=None):
 #     await member.ban(reason=reason)
 
-# comands
-# join moment this goood
 
 
+# make a bd with ph qouths
+
+# join / leave fucntions 
 @client.event
 async def on_member_join(member):
     for channel in member.guild.channels:
@@ -98,8 +113,6 @@ async def on_member_join(member):
                 )
             await channel.send(embed=embed)
 
-
-# leave moment fix this
 @client.event
 async def on_member_remove(member):
     for channel in member.guild.channels:
@@ -119,6 +132,50 @@ async def on_member_remove(member):
             await channel.send(embed=embed)
 
 
+# in dev
+list_of_greetings = ["Hello!" , "It’s nice to meet you.", "Hi!" , "G’day!", "Howdy!", "Hey", "Hey there", "What’s up?", "sup", "Yo"]
+
+random_greetings = random.shuffle(list_of_greetings)
+print(random_greetings)
+
+# add image to the invite
+# @client.command
+#     async def yes():
+#         if message.content.startswith('$invite'):
+#             embedVar = Embed(
+#                 title="Server Invite",
+#                 description="Here is the invite",
+#                 color=0x04b4db
+#                 )
+#             embedVar.add_field(
+#                 name="*https://discord.gg/Tehtfh6gwz*",
+#                 value="**you can use this invite to join**",
+#                 inline=False)
+#             await message.channel.send(embed=embedVar)
+
+client2.command() 
+async def server(cxt):
+    name= str(cxt.guild.name) 
+    discription = str(cxt.guild.description) 
+
+    owner =  str(cxt.guild.ouner)
+    id = str(cxt.guild.id) 
+    region = str(cxt.guild.region) 
+    memberCout = str(cxt.guild.member_cout)
+    icon = str(cxt.guild.icon_uri) 
+
+    embed = Embed(
+        title = name + "Severe information",
+        description = discription(),
+    )
+    embed.set_thumbnail(url = icon)
+    embed.add_field(name = "owner", value = owner, inline=True)
+    embed.add_field(name = "Sever ID", value = id, inline=True)
+    embed.add_field(name = "Region", value = region, inline=True)
+    embed.add_field(name = "Member Cout", value = memberCout, inline=True)
+
+    await cxt.send(embed=embed) 
+
 @client.event
 async def on_message(message):
     if message.content.startswith('$help'):
@@ -133,23 +190,12 @@ async def on_message(message):
             inline=False
             )
         embedVar.add_field(
-            name="more commands",
-            value="$inspire / $invite",
+            name="More commands",
+            value="$inspire - for a inspirational quote\n\n$quote - to get a different type of quote  \n\n$invite - for the invite sever link \n\n  ",
             inline=False
             )
         await message.channel.send(embed=embedVar)
-# add image to the invite
-    if message.content.startswith('$invite'):
-        embedVar = Embed(
-            title="Server Invite",
-            description="Here is the invite",
-            color=0x04b4db
-            )
-        embedVar.add_field(
-            name="*https://discord.gg/Tehtfh6gwz*",
-            value="**you can use this invite to join**",
-            inline=False)
-        await message.channel.send(embed=embedVar)
+
 
     # hi commands
     if message.author == client.user:
