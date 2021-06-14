@@ -47,11 +47,75 @@ body {
   }
 
   #fistline {
-    color: white;
     text-align: left;
     font-size: 80px;
     position: relative;
     top: 0px;    
+    animation: fadeIn linear 2s;
+      letter-spacing: 5px;
+      animation: colorRotate 16s linear 0s infinite;
+    }
+    
+  @keyframes colorRotate {
+    from {
+      color: #6666ff;
+    }
+    10% {
+      color: #0099ff;
+    }
+    50% {
+      color: #00ff00;
+    }
+    75% {
+      color: #ff3399;
+    }
+    100% {
+      color: #6666ff;
+    }
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+  #name {
+    font-size: 55px;
+    position: relative;
+    left: 25px;
+    animation: fadeIn linear 2s;
+    animation: fadeIn linear 2s;
+    letter-spacing: 5px;
+    animation: colorRotate 16s linear 0s infinite;
+  }
+  
+@keyframes colorRotate {
+  from {
+    color: #6666ff;
+  }
+  10% {
+    color: #0099ff;
+  }
+  50% {
+    color: #00ff00;
+  }
+  75% {
+    color: #ff3399;
+  }
+  100% {
+    color: #6666ff;
+  }
+  }
+  
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  #secondline {
+    color: white;
+    font-size: 40px;
+    top: -80px;  
     animation: fadeIn linear 2s;
 }
 
@@ -60,38 +124,11 @@ body {
   100% {opacity:1;}
 }
 
-
-  #secondline {
-      color: white;
-      font-size: 40px;
-      top: -80px;  
-      animation: fadeIn linear 2s;
-  }
-
-  @keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-  }
-
-  #name {
-    color: #212327;
-    font-size: 55px;
-    position: relative;
-    left: 25px;
-    animation: fadeIn linear 2s;
-  }
-  
-  @keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-  }
-
   #fistp {
     font-weight: 50;
   }
 
   #kemal{
-      color: rgb(0, 170, 248);
       font-weight: 500;
       font-style: bold;
       text-shadow: -1px -1px 0 #000,
@@ -100,6 +137,27 @@ body {
                     1px 1px 0 #000;
       display:inline;
       animation: fadeIn linear 2s;
+      animation: fadeIn linear 2s;
+      letter-spacing: 5px;
+      animation: colorRotate 16s linear 0s infinite;
+    }
+    
+  @keyframes colorRotate {
+    from {
+      color: #6666ff;
+    }
+    10% {
+      color: #0099ff;
+    }
+    50% {
+      color: #00ff00;
+    }
+    75% {
+      color: #ff3399;
+    }
+    100% {
+      color: #6666ff;
+    }
   }
   
   @keyframes fadeIn {
@@ -112,15 +170,9 @@ body {
   width: 10px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-}
-          
-
- 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
