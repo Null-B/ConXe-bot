@@ -36,26 +36,6 @@ body {
     position:sticky;
   }
 
-
-  #link {
-    background-color: rgb(255, 196, 0);
-    
-    color: white;
-    padding: 14px 25px;
-    text-align: center;
-    display: inline-block;
-    position:sticky;
-    left: 1920px;
-    top: 0px;
-    text-decoration: none;
-  }
-  #text_link {
-    color: #000;
-    font-family: Arial;
-    text-decoration: none;
-    font-weight: 10px
-  }
- 
   #enter {
     animation-name: movein;
     animation-duration: 4s;
@@ -71,7 +51,7 @@ body {
     text-align: left;
     font-size: 80px;
     position: relative;
-    top: -80px;    
+    top: 0px;    
     animation: fadeIn linear 2s;
 }
 
@@ -134,8 +114,9 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
 }
+          
+
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
