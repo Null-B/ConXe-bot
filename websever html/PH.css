@@ -1,0 +1,148 @@
+body {
+    background-color: #7289DA;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 50;
+    margin: 0;
+    
+  }
+/* 
+  this for the taskbar */
+  .topnav {
+    overflow: hidden;
+    background-color: rgba(51, 51, 51, 0.349);
+    position:sticky;
+  }
+  
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    position:sticky;
+  }
+  
+  .topnav a:hover {
+    background-color:#99aab5;
+    color: black;
+    position:sticky;
+  }
+  
+  .topnav a.active {
+    background-color: #0084ff86;
+    color: white;
+    position:sticky;
+  }
+
+
+  #link {
+    background-color: rgb(255, 196, 0);
+    
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    display: inline-block;
+    position:sticky;
+    left: 1920px;
+    top: 0px;
+    text-decoration: none;
+  }
+  #text_link {
+    color: #000;
+    font-family: Arial;
+    text-decoration: none;
+    font-weight: 10px
+  }
+ 
+  #enter {
+    animation-name: movein;
+    animation-duration: 4s;
+    animation-delay: 2s;
+  }
+
+  @keyframes movein {
+      
+  }
+
+  #fistline {
+    color: white;
+    text-align: left;
+    font-size: 80px;
+    position: relative;
+    top: -80px;    
+    animation: fadeIn linear 2s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+
+  #secondline {
+      color: white;
+      font-size: 40px;
+      top: -80px;  
+      animation: fadeIn linear 2s;
+  }
+
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  #name {
+    color: #212327;
+    font-size: 55px;
+    position: relative;
+    left: 25px;
+    animation: fadeIn linear 2s;
+  }
+  
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  #fistp {
+    font-weight: 50;
+  }
+
+  #kemal{
+      color: rgb(0, 170, 248);
+      font-weight: 500;
+      font-style: bold;
+      text-shadow: -1px -1px 0 #000,
+                    1px -1px 0 #000,
+                    -1px 1px 0 #000,
+                    1px 1px 0 #000;
+      display:inline;
+      animation: fadeIn linear 2s;
+  }
+  
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

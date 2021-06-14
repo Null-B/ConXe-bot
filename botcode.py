@@ -3,7 +3,7 @@ import json
 import requests
 import random
 from discord import Client, Intents, Embed, Status, Game
-from discord.ext import comands
+from discord.ext import commands
 
 # from webserver import keep_alive
 from dotenv import load_dotenv
@@ -20,7 +20,7 @@ client = Client(
     intents=INTENTS
     )
 
-client2 = comands.bot(
+client2 = commands.Bot(
     command_prefix = '!'
 )
 
@@ -53,6 +53,13 @@ async def random_quote_gen():
 
 #add a func for random emojis
 
+async def random_emojis():
+    data = "https://ranmoji.herokuapp.com/emojis/api/v.1.0/"
+    json_data = json.loads(data)
+    emojis =(f"{json_data[0][0]} {json_data[2][0]} ")
+    return (emojisvi)
+
+
 #inspire foramt
 async def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
@@ -81,12 +88,12 @@ async def get_quote():
 
 
 
-# kick/ban
-# @client.commands
+# # kick/ban
+# @client2.commands
 # async def kick(ctx, member : client.Member, *, reason=None):
 #     await member.kick(reason=reason)
 
-# @client.command
+# @client2.commands
 # async def ban(ctx, member : client.Member, *, reason=None):
 #     await member.ban(reason=reason)
 
@@ -222,6 +229,10 @@ async def on_message(message):
     if message.content.startswith('$quote'):
         quote = await random_quote_gen()
         await message.channel.send(quote)
+        
+    if message.content.startswith('$emoji'):
+        emoji = await random_emojis()
+        await message.channel.send(emoji)
 
 # keep_alive()
 
