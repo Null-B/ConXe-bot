@@ -57,7 +57,7 @@ async def random_emojis():
     data = "https://ranmoji.herokuapp.com/emojis/api/v.1.0/"
     json_data = json.loads(data)
     emojis =(f"{json_data[0][0]} {json_data[2][0]} ")
-    return (emojisvi)
+    return (emojis)
 
 
 #inspire foramt
