@@ -1,18 +1,53 @@
+html{
+  height: 150%;
+}
+
+body > #bg {
+  height: 100%;
+  width: 100%;
+  background: rgb(255,175,0);
+  background: linear-gradient(
+    48deg, 
+    rgba(255, 219, 140, 0.24) 0%, 
+    rgba(160, 182, 255, 0.192) 100%
+  );
+
+
+  clip-path: polygon(32% 0, 100% 0, 100% 33%, 59% 100%, 0 100%, 0 59%);
+  position: absolute;
+  z-index: -1;
+  animation: fadeIn linear 2s;
+
+
+}
+
+
 body {
-    background-color: #7289DA;
-    background-image: 'Artboard 1.png';
+  
+
+  background: linear-gradient(
+    48deg, 
+    rgba(255,79,79,0.4682247899159664) 0%,  
+    rgba(88,97,255,1) 100%
+    );
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: 50;
     margin: 0;
+    animation: fadeIn linear 2s;
     
   }
+
+
+
 /* 
   this for the taskbar */
   .topnav {
     overflow: hidden;
-    background-color: rgba(51, 51, 51, 0.349);
-    position:sticky;
+    background-color: rgba(51, 51, 51, 0.137);
+    display: flex;
+    position: sticky; 
   }
   
   .topnav a {
@@ -22,19 +57,22 @@ body {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-    position:sticky;
+    display: flex;
+    position: sticky; 
   }
   
   .topnav a:hover {
     background-color:#99aab5;
     color: black;
-    position:sticky;
+    display: flex;
+    position: sticky; 
   }
   
   .topnav a.active {
     background-color: #0084ff86;
     color: white;
-    position:sticky;
+    display: flex;
+    position: sticky; 
   }
 
   #enter {
@@ -63,19 +101,13 @@ body {
     
   @keyframes colorRotate {
     from {
-      color: #6666ff;
-    }
-    10% {
-      color: #0099ff;
+      color: #ff6666;
     }
     50% {
-      color: #00ff00;
-    }
-    75% {
-      color: #ff3399;
+      color: #ffc400;
     }
     100% {
-      color: #6666ff;
+      color: #ff3d3d;
     }
 }
 
@@ -99,23 +131,7 @@ body {
     animation: colorRotate 16s linear 0s infinite;
   }
   
-@keyframes colorRotate {
-  from {
-    color: #6666ff;
-  }
-  10% {
-    color: #0099ff;
-  }
-  50% {
-    color: #00ff00;
-  }
-  75% {
-    color: #ff3399;
-  }
-  100% {
-    color: #6666ff;
-  }
-  }
+
   
   @keyframes fadeIn {
     0% {opacity:0;}
@@ -137,6 +153,7 @@ body {
 }
 
   #fistp {
+    text-align: center;
     font-weight: 50;
   }
 
@@ -153,24 +170,7 @@ body {
       letter-spacing: 5px;
       animation: colorRotate 16s linear 0s infinite;
     }
-    
-  @keyframes colorRotate {
-    from {
-      color: #6666ff;
-    }
-    10% {
-      color: #0099ff;
-    }
-    50% {
-      color: #00ff00;
-    }
-    75% {
-      color: #ff3399;
-    }
-    100% {
-      color: #6666ff;
-    }
-  }
+
   
   @keyframes fadeIn {
     0% {opacity:0;}
