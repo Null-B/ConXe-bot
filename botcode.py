@@ -19,26 +19,25 @@ INTENTS.members = True
 client = Client(
     command_prefix="!",
     intents=INTENTS
-    )
+)
 
 bot = commands.Bot(
     command_prefix=".",
-    )
+)
 
 # Ready message
+
+
 @client.event
 async def on_ready():
     await client.change_presence(
         status=Status.online,
         activity=Game(
             "check my code here-https://github.com/Null-B/bot"
-            )
         )
-    print (f'Logged in as: {client.user.name}')
-    print (f'With ID: {client.user.id}')
-
-
-
+    )
+    print(f'Logged in as: {client.user.name}')
+    print(f'With ID: {client.user.id}')
 
 
 # Json for the inspire fucntion
@@ -48,24 +47,25 @@ async def random_quote_gen():
     headers = {
         'x-rapidapi-key': "ab103f1da6mshbf05334d9149fc7p1a58d4jsn76e86d802108",
         'x-rapidapi-host': "quotejoy.p.rapidapi.com"
-        }
+    }
 
     response = requests.request("GET", url, headers=headers)
     quote = (response)
-    print (response.text)
+    print(response.text)
     return (quote)
 
+# add a func for random emojis
 
-#add a func for random emojis
 
 async def random_emojis():
     data = "https://ranmoji.herokuapp.com/emojis/api/v.1.0/"
     json_data = json.loads(data)
-    emojis =(f"{json_data[0][0]} {json_data[2][0]} ")
+    emojis = (f"{json_data[0][0]} {json_data[2][0]} ")
     return (emojis)
 
+# inspire foramt
 
-#inspire foramt
+
 async def get_quote():
     response = requests.get("https://zenquotes.io/api/random")
     json_data = json.loads(response.text)
@@ -89,21 +89,16 @@ async def get_quote():
 #     print(quote_embed)
 #     return(embed)
 
-
-
-
-
 # # kick/ban
 # @commands.command()
 
-# async def kick(ctx, member: discord.Member,*, reason=None): 
+# async def kick(ctx, member: discord.Member,*, reason=None):
 #     await member.kick(reason=reason)
-
-
 
 # make a bd with ph qouths
 
-# join / leave fucntions 
+# join / leave fucntions
+
 
 @client.event
 async def on_member_remove(member):
@@ -111,33 +106,31 @@ async def on_member_remove(member):
         if str(channel) == "welcome":
             embed = Embed(
                 color=0xdeb110
-                )
+            )
             embed.add_field(
                 name="good bye",
                 value=f"{member.name} has left {member.guild.name}",
                 inline=False
-                )
+            )
             embed.set_image(
                 url=()
-                )
+            )
             await channel.send(embed=embed)
-
 
 # in dev
 
 # add image to the invite
 
-
-# bot.command() 
+# bot.command()
 # async def server(cxt):
-#     name= str(cxt.guild.name) 
-#     discription = str(cxt.guild.description) 
+#     name= str(cxt.guild.name)
+#     discription = str(cxt.guild.description)
 
 #     owner =  str(cxt.guild.ouner)
-#     id = str(cxt.guild.id) 
-#     region = str(cxt.guild.region) 
+#     id = str(cxt.guild.id)
+#     region = str(cxt.guild.region)
 #     memberCout = str(cxt.guild.member_cout)
-#     icon = str(cxt.guild.icon_uri) 
+#     icon = str(cxt.guild.icon_uri)
 
 #     embed = Embed(
 #         title = name + "Severe information",
@@ -149,7 +142,8 @@ async def on_member_remove(member):
 #     embed.add_field(name = "Region", value = region, inline=True)
 #     embed.add_field(name = "Member Cout", value = memberCout, inline=True)
 
-#     await cxt.send(embed=embed) 
+#     await cxt.send(embed=embed)
+
 
 @client.event
 async def on_message(message):
@@ -158,18 +152,19 @@ async def on_message(message):
             title="Commands",
             description="dont forget to use the \"$\" to use the comands",
             color=0x00ff00
-            )
+        )
         embedVar.add_field(
             name="Hi commands",
             value="$hi / $hello / $sup",
             inline=False
-            )
+        )
         embedVar.add_field(
             name="More commands",
             value="$inspire - for a inspirational quote\n\n$quote - to get a different type of quote  \n\n$invite - for the invite sever link \n\n  ",
             inline=False
-            )
+        )
         await message.channel.send(embed=embedVar)
+
 
 async def yes():
     if message.content.startswith('$invite'):
@@ -177,13 +172,12 @@ async def yes():
             title="Server Invite",
             description="Here is the invite",
             color=0x04b4db
-            )
+        )
         embedVar.add_field(
             name="*https://discord.gg/Tehtfh6gwz*",
             value="**you can use this invite to join**",
             inline=False)
         await message.channel.send(embed=embedVar)
-
 
     # hi commands
     if message.author == client.user:
@@ -210,7 +204,7 @@ async def yes():
     if message.content.startswith('$quote'):
         quote = await random_quote_gen()
         await message.channel.send(quote)
-        
+
     if message.content.startswith('$emoji'):
         emoji = await random_emojis()
         await message.channel.send(emoji)
