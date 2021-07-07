@@ -1,12 +1,21 @@
 # The "Your mom bot" github readme md
 
-## THIS BOT IS THIS IN DEVELOPMENT!!!<br>
-
-![GitHub last commit](https://img.shields.io/github/last-commit/Null-B/bot?color=success&logo=github&style=flat-square)
-
-<a href="">
+<p align="center">
+    <a href="https://github.com/Null-B">
+        <img src="https://img.shields.io/github/followers/Null-b?color=success&logoColor=blueviolet&style=social">
+    </a>
+        <a href="https://websever-for-replit.kemalsptkemal.repl.co">
+        <img src="https://img.shields.io/website?down_color=red&down_message=Down&label=Website&style=flat-square&up_color=success&up_message=online&url=https%3A%2F%2Fwebsever-for-replit.kemalsptkemal.repl.co">
+    </a>
+    <a href="https://github.com/Null-B/websever-for-replit">
+        <img src="https://img.shields.io/github/repo-size/Null-b/websever-for-replit?color=orange&label=Website%20repo&logo=github&style=flat-square">
+    </a>
+    <a href="https://fakeupdate.net/win10ue/">
         <img src="https://img.shields.io/github/last-commit/Null-B/bot?style=flat-square">
     </a>
+</p>
+
+#### THIS BOT IS THIS IN DEVELOPMENT!!!<br>
 
 This is a [discord.py](https://discordpy.readthedocs.io/en/stable/) bot made by the user Null-B, and it has multiple commands in the code.<br>
 
