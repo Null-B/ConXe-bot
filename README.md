@@ -1,5 +1,6 @@
 # The "Your mom bot" github readme md
-## THIS BOT IS THIS IN DEVELOPMENT!!!<br> 
+## THIS BOT IS THIS IN DEVELOPMENT!!!<br>
+![GitHub last commit](https://img.shields.io/github/last-commit/Null-B/bot?color=success&logo=github&style=flat-square)
 
 This is a [discord.py](https://discordpy.readthedocs.io/en/stable/) bot made by the user Null-B, and it has multiple commands in the code.<br> 
 
