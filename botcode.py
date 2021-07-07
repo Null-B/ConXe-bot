@@ -2,8 +2,9 @@ import os
 import json
 import requests
 import random
-from discord import Client, Intents, Embed, Status, Game
+from discord import Client, Intents, Embed, Status, Game, Member, message
 from discord.ext import commands
+import discord
 
 # from webserver import keep_alive
 from dotenv import load_dotenv
@@ -20,9 +21,9 @@ client = Client(
     intents=INTENTS
     )
 
-client2 = commands.Bot(
-    command_prefix = '!'
-)
+bot = commands.Bot(
+    command_prefix=".",
+    )
 
 # Ready message
 @client.event
@@ -35,6 +36,10 @@ async def on_ready():
         )
     print (f'Logged in as: {client.user.name}')
     print (f'With ID: {client.user.id}')
+
+
+
+
 
 # Json for the inspire fucntion
 async def random_quote_gen():
@@ -89,36 +94,16 @@ async def get_quote():
 
 
 # # kick/ban
-# @client2.commands
-# async def kick(ctx, member : client.Member, *, reason=None):
-#     await member.kick(reason=reason)
+# @commands.command()
 
-# @client2.commands
-# async def ban(ctx, member : client.Member, *, reason=None):
-#     await member.ban(reason=reason)
+# async def kick(ctx, member: discord.Member,*, reason=None): 
+#     await member.kick(reason=reason)
 
 
 
 # make a bd with ph qouths
 
 # join / leave fucntions 
-@client.event
-async def on_member_join(member):
-    for channel in member.guild.channels:
-        if str(channel) == "welcome":
-            embed = Embed(
-                color=0x4a3d9a
-                )
-            embed.add_field(
-                name="Welcome",
-                value=f"{member.mention} has joined {member.guild.name}",
-                inline=False
-                )
-            embed.set_image(
-                url=("https://newgitlab.elaztek.com/NewHorizon-Developme"
-                     "nt/discord-bots/Leha/-/raw/master/res/welcome.gif")
-                )
-            await channel.send(embed=embed)
 
 @client.event
 async def on_member_remove(member):
@@ -128,60 +113,43 @@ async def on_member_remove(member):
                 color=0xdeb110
                 )
             embed.add_field(
-                name="Welcome",
+                name="good bye",
                 value=f"{member.name} has left {member.guild.name}",
                 inline=False
                 )
             embed.set_image(
-                url=("https://newgitlab.elaztek.com/NewHorizon-Developme"
-                     "nt/discord-bots/Leha/-/raw/master/res/goodbye.gif")
+                url=()
                 )
             await channel.send(embed=embed)
 
 
 # in dev
-list_of_greetings = ["Hello!" , "It’s nice to meet you.", "Hi!" , "G’day!", "Howdy!", "Hey", "Hey there", "What’s up?", "sup", "Yo"]
-
-random_greetings = random.shuffle(list_of_greetings)
-print(random_greetings)
 
 # add image to the invite
-# @client.command
-#     async def yes():
-#         if message.content.startswith('$invite'):
-#             embedVar = Embed(
-#                 title="Server Invite",
-#                 description="Here is the invite",
-#                 color=0x04b4db
-#                 )
-#             embedVar.add_field(
-#                 name="*https://discord.gg/Tehtfh6gwz*",
-#                 value="**you can use this invite to join**",
-#                 inline=False)
-#             await message.channel.send(embed=embedVar)
 
-client2.command() 
-async def server(cxt):
-    name= str(cxt.guild.name) 
-    discription = str(cxt.guild.description) 
 
-    owner =  str(cxt.guild.ouner)
-    id = str(cxt.guild.id) 
-    region = str(cxt.guild.region) 
-    memberCout = str(cxt.guild.member_cout)
-    icon = str(cxt.guild.icon_uri) 
+# bot.command() 
+# async def server(cxt):
+#     name= str(cxt.guild.name) 
+#     discription = str(cxt.guild.description) 
 
-    embed = Embed(
-        title = name + "Severe information",
-        description = discription(),
-    )
-    embed.set_thumbnail(url = icon)
-    embed.add_field(name = "owner", value = owner, inline=True)
-    embed.add_field(name = "Sever ID", value = id, inline=True)
-    embed.add_field(name = "Region", value = region, inline=True)
-    embed.add_field(name = "Member Cout", value = memberCout, inline=True)
+#     owner =  str(cxt.guild.ouner)
+#     id = str(cxt.guild.id) 
+#     region = str(cxt.guild.region) 
+#     memberCout = str(cxt.guild.member_cout)
+#     icon = str(cxt.guild.icon_uri) 
 
-    await cxt.send(embed=embed) 
+#     embed = Embed(
+#         title = name + "Severe information",
+#         description = discription(),
+#     )
+#     embed.set_thumbnail(url = icon)
+#     embed.add_field(name = "owner", value = owner, inline=True)
+#     embed.add_field(name = "Sever ID", value = id, inline=True)
+#     embed.add_field(name = "Region", value = region, inline=True)
+#     embed.add_field(name = "Member Cout", value = memberCout, inline=True)
+
+#     await cxt.send(embed=embed) 
 
 @client.event
 async def on_message(message):
@@ -201,6 +169,19 @@ async def on_message(message):
             value="$inspire - for a inspirational quote\n\n$quote - to get a different type of quote  \n\n$invite - for the invite sever link \n\n  ",
             inline=False
             )
+        await message.channel.send(embed=embedVar)
+
+async def yes():
+    if message.content.startswith('$invite'):
+        embedVar = Embed(
+            title="Server Invite",
+            description="Here is the invite",
+            color=0x04b4db
+            )
+        embedVar.add_field(
+            name="*https://discord.gg/Tehtfh6gwz*",
+            value="**you can use this invite to join**",
+            inline=False)
         await message.channel.send(embed=embedVar)
 
 
