@@ -128,9 +128,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-/.vscode
+
+
 /__pycache__
-/websever html
 /.env
-/.vscode/settings.json
 /to_do txt
+/README.md
+/Ded code.txt
