@@ -45,6 +45,8 @@ when you do that you can run the bot and here you go <br>
 But if you want it to be on a 24/7 sever you can use <br>
 [uptimerobot](https://uptimerobot.com/), [AWS](https://aws.amazon.com/), [Heroku](https://dashboard.heroku.com/apps) and more<br>
 
+this projects uses the [MIT LICENSE](https://github.com/Null-B/Your_mom_bot/blob/main/LICENSE.md) 
+
 thank you for reading this and we are updating this a lot<br>
 
 ## Thanks to PH-KDX for the code help and some code changes
