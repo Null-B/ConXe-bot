@@ -11,6 +11,7 @@ load_dotenv()
 
 TOKEN = os.getenv("TOKEN")
 client = commands.Bot(command_prefix=".")
+client.remove_command('help')
 status = cycle(["Hey if you wnat help use .help🌑", "Hey Welcome🌒", "moon🌓.", "use prefix \".\" for commands🌔", "chese🌕", "help the dev - pls🌖", "go to github🌗", "thanks for useing \"Your mom Bot\" hope you have a good time useing it🌘"])
 
 #✅
