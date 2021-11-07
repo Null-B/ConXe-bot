@@ -1,0 +1,44 @@
+Ded code
+
+--------------------------------------------------------------------------------
+
+async def on_member_leave(member, ctx):
+    embed = discord.Embed(
+        title = f'{member.username} has left the Server',
+        description = f'good bye',
+        color = 0xF71735
+    )
+    await ctx.send(embed=embed)
+
+--------------------------------------------------------------------------------
+
+async def on_member_join(member, ctx):
+    embed = discord.Embed(
+        title = f'{member.username} has join the Server',
+        description = f'Wellcome',
+        color = 0xFF9F1C
+    )
+    await ctx.send(embed=embed)
+
+--------------------------------------------------------------------------------
+
+@client.event
+async def on_comand_error(ctx, error):
+    if isinstance(error, discord.ext.commands.errors.ChannelNotFound):
+        await ctx.send("AAAAAAAAAA")
+
+--------------------------------------------------------------------------------
+
+#❌
+@client.event
+async def on_kick_error(ctx, error, member : discord.Member):
+    if isinstance(error, commands.MissingPermissions):
+        embed = discord.Embed(
+            title = f'{member.name} You cant do that',
+            description = "no",
+            color = discord.Color.red()
+        )
+        await ctx.send(embed=embed)
+
+--------------------------------------------------------------------------------
+

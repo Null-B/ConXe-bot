@@ -192,7 +192,7 @@ async def clear_errrors(ctx, error):
 #✅
 #add info to this
 @client.command()
-async def Help(ctx):
+async def help(ctx):
     embed=discord.Embed(title="**Here is some help to the Bot**", description="you can find more help on the commands page (insert commands page url)", color=0xff0000)
     embed.add_field(name="A", value="D", inline=True)
     embed.add_field(name="B", value="E", inline=True)
@@ -343,18 +343,6 @@ async def unban(ctx, *, member):
 
     print(f"user has \"{member}\" been  unband")
 
-@client.command()
-async def ayay (ctx):
-    await ctx.channel.send("Please enter a ayah nuber :")
-
-    ayah_Number = await client.wait_for("message")
-
-
-    print (ayah_Number)    
-
-    url = f"http://api.alquran.cloud/v1/ayah/{ayah_Number}/en.asad"
-
-
 #need some work ❌
 @client.command()
 async def echo(self, ctx):
@@ -421,51 +409,6 @@ async def dm(ctx, member: discord.Member):
     print(f"\"Dm\" has been sent by {member}") 
 
 
-#need some work ❌
-@client.command()
-async def ayah(ctx):
-
-    def check(msg):
-        return ctx.message.content
-
-    try:
-        embed = discord.Embed(
-            title = 'Please tell us a a ayah Number',
-            description = 'these are the valid ayah Numbers: ',
-        )
-        await ctx.send(embed=embed)
-
-        ayah_number = await client.wait_for("message", check=check, timeout=30) 
-        await ctx.send(ayah_number)
-        # await ctx.channel.purge(limit=2)
-    except asyncio.TimeoutError:
-        await ctx.delete()
-        await ctx.send("Sorry, you didn't reply in time!")
-
-
-        embed = discord.Embed(
-            title = 'Canceleing due to timeout.',
-            description = 'deleteing after 10 seconds',
-        )
-        await ctx.guild.send(embed=embed, deleat_after=10)
-
-
-    response = requests.get(f"http://api.alquran.cloud/v1/ayah/{ayah_number}/en.asad")
-    json_data = json.loads(response.text)
-    ayah = (json_data)
-
-    """
-    embed = discord.Embed(
-            title = 'you must enter a positive amount',
-            description = "",
-            color = discord.Color.red()
-        )
-    """
-
-    await ctx.channel.send(ayah)
-
-    print("Ayah has been sent successfully")
-
 
 @client.command()
 async def some(ctx):
@@ -480,7 +423,6 @@ async def some(ctx):
         await ctx.send("You said yes!")
     else:
         await ctx.send("You said no!")
-
 
 
 client.run(TOKEN)
