@@ -1,4 +1,4 @@
-# The "Your mom bot" github readme md
+# The "ConXe" github readme md
 
 <p align="center">
     <a href="https://github.com/Null-B">
